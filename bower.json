@@ -20,7 +20,6 @@
     "tests"
   ],
   "dependencies": {
-    "bootswatch-dist": "^3.3.1+2-lumen",
     "angular": "^1.5.3",
     "angular-flash-alert": "^2.2.7",
     "jquery": "^2.2.2"

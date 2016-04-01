@@ -3,9 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "node app.js"
-  },
-  "scripts": {
+    "start": "node app.js",
     "postinstall": "bower install"
   },
   "dependencies": {
@@ -15,7 +13,7 @@
     "ejs": "^2.4.1",
     "express": "~4.13.1",
     "morgan": "~1.6.1",
-    "bower": "0.6.x"
+    "bower": "^1.7.7"
   },
   "description": "Budapest Festival",
   "main": "app.js",

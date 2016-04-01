@@ -1,0 +1,28 @@
+{
+  "name": "budapestfestival",
+  "description": "Budapest Festival",
+  "main": "app.js",
+  "authors": [
+    "Aurelien Landelle"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "Budapest",
+    "Festival"
+  ],
+  "moduleType": [],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootswatch-dist": "^3.3.1+2-lumen",
+    "angular": "^1.5.3",
+    "angular-flash-alert": "^2.2.7",
+    "jquery": "^2.2.2"
+  }
+}

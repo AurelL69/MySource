@@ -13,8 +13,7 @@ var app = express();
 app.set( 'views', path.join(__dirname, 'views') );
 app.set( 'view engine', 'ejs' );
 
-var port = 8080;
-app.set('port', port);
+app.set('port', (process.env.PORT || 5000));
 
 // middleware
 app.use( logger('dev') );

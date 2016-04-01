@@ -25,7 +25,7 @@ app.use( bodyParser.json() );
 
 // routes
 app.use( '/', require( path.join(__dirname, 'routes', 'routes.js') ) );
-// app.use( '/api', require( path.join(__dirname, 'routes', 'api.js') ) );
+app.use( '/api', require( path.join(__dirname, 'routes', 'api.js') ) );
 
 app.set('port', (process.env.PORT || 5000));
 
@@ -39,9 +39,19 @@ app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });
 
- 
+
 // démarrage du serveur web
 // server.listen(port);
 // server.on('listening', function() {
 //   console.log( 'Web server listening on port ' + port + '...' );
 // } )
+
+// connexion à la base de données
+var models = require( path.join( __dirname, 'models' ) );
+
+models.sequelize.sync().then( function() {
+
+  console.log('DB: online!')
+
+
+})

@@ -1,16 +1,218 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" ng-app='ngApp'>
 <head>
 	<% include ./partials/head %>
 </head>
 
 <body>
-<title> <%= titre %> </title>
+
+  <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">DEMO</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/">Accueil</a></li>
+      </ul>
+  </nav>
 
 
-</body>
+	<h1 style="text-align:center">MA DISCOGRAPHIE</h1>
+
+	<!-- <div ng-controller='Ctrl'>
+		{{ toto }}
+	</div> -->
+
+	<div class="container">
+    <div ng-controller='SongController'>
+                    
+    <h2> Titres </h2>
+
+
+		 <table style="width:100%">
+           
+
+            <tr>   
+              <td style="vertical-align: top"><form name="SongForm" novalidate>
+                <table class="table table-striped table-bordered">
+                  <tr>
+                    <th>
+                      ID
+                    </th>
+                    <th>
+                      Titre
+                    </th>
+                    <th>
+                      Année
+                    </th>
+                    <th>
+                      Genre
+                    </th>
+                    <th>
+                      Artiste
+                    </th>
+                    <th>
+                      Action
+                    </th>
+                    
+                    <th>&nbsp;</th>
+                    <th>&nbsp;</th>
+                  </tr>
+
+                  <tr>
+  		            	<td></td>
+  		            	<td>
+  		            		<input type="text" class="form-control" ng-model="song.title" name="name" placeholder="Titre" required="name">
+  		            	</td>
+  		            	<td>
+  		              		<input type="number" class="form-control" ng-model="song.year" ng-pattern="/^\d{4}$/" name="year" placeholder="2011" required="year">
+  		              	</td>
+  		            	<td>
+  		              		<input type="text" class="form-control" ng-model="song.genre" name="genre" placeholder="Rock" required="genre">
+  		              </td>
+  		              <td>
+                      <select ng-model="song.AuthorId" ng-options="author.id as author.id + ' ' + author.name for author in authors | orderBy: 'name'" > 
+
+                      </select>
+
+
+                    </td>
+  		              <td>
+  		              		<button type="submit" class="btn btn-primary btn-lg hvr-icon-float-away"  ng-click="addSong(); successAlert1()" ng-disabled="SongForm.$invalid">Ajouter un titre&nbsp;
+                        </button>
+                        <br/>
+                    </td>
+                    <td>
+                     		<button type="submit" class="btn btn-info btn-lg hvr-icon-fade"  ng-disabled="SongForm.$invalid" ng-click="updateSong(); successAlert2(); ">Update&nbsp;
+                        </button>
+                    </td>
+                    <td>
+                        <button type="submit" class="btn btn-info btn-lg hvr-icon-spin"  ng-click="deselectSong()">Effacer&nbsp;
+                        </button>
+                    </td>
+            		  </tr>
+                  
+                  <tr ng-repeat="song in songs">
+                    <td> 
+                      {{song.id}}
+                    </td>
+                    <td> 
+                      {{song.title}}
+                    </td>
+                    <td> 
+                      {{song.year}}
+                    </td>
+                    <td> 
+                      {{song.genre}}
+                    </td>
+                    <td> 
+                      {{song.AuthorId}} {{ (authors | filter : {id: song.AuthorId})[0].name }}
+                    </td>
+                    <td>
+                    	<button type="submit" class="btn btn-danger btn-lg hvr-buzz"  ng-click="removeSong(song.id); successAlert3()">Supprimer
+                      </button>
+                    </td>
+                    <td>
+                      	<button type="submit" class="btn btn-warning btn-lg hvr-icon-forward"  ng-click="editSong(song.id)">Editer&nbsp;
+                        </button>
+                    </td>
+                    <td>
+                    </td>
+                  </tr>
+                </table>
+              </form></td>
+            </tr>
+          </table>
+          <flash-message show-close="true" duration="2000" on-dismiss="myCallback(flash)"></flash-message>
+   </div>
+
+
+  <div ng-controller='AuthorController'>
+
+    <h2> Artistes </h2>
+    
+    <table style="width:100%">
+         
+
+          <tr>   
+            <td style="vertical-align: top"><form name="AuthorForm" novalidate>
+              <table class="table table-striped table-bordered">
+                <tr>
+                  <th>
+                    ID
+                  </th>
+                  <th>
+                    Artiste
+                  </th>
+                  <th>
+                    Action
+                  </th>
+                  
+                  <th>&nbsp;</th>
+                  <th>&nbsp;</th>
+                </tr>
+
+                <tr>
+                  <td></td>
+                  <td>
+                    <input type="text" class="form-control" ng-model="author.name" name="name" placeholder="Artiste" required="name">
+                  </td>
+                  <td>
+                      <button type="submit" class="btn btn-primary btn-lg hvr-icon-float-away" ng-click="addAuthor(); successAlert4()" ng-disabled="AuthorForm.$invalid">Ajouter un Artiste&nbsp;
+                      </button>
+                      
+                  </td>
+                  <td>
+                      <button type="submit" class="btn btn-info btn-lg hvr-icon-fade" ng-disabled="AuthorForm.$invalid" ng-click="updateAuthor(); successAlert5(); ">Update&nbsp;
+                      </button>
+                  </td>
+                  <td>
+                      <button type="submit" class="btn btn-info btn-lg hvr-icon-spin" ng-click="deselectAuthor()">Effacer&nbsp;
+                      </button>
+                  </td>
+                
+                </tr>
+              
+                <tr ng-repeat="author in authors">
+                  <td>
+                    {{author.id}}
+                  </td>
+                  <td>
+                    {{author.name}}
+                  </td>
+                  <td>
+                    <button type="submit" class="btn btn-danger btn-lg hvr-buzz" ng-click="removeAuthor(author.id); successAlert6()">Supprimer
+                    </button>
+                  </td>
+                  <td>
+                      <button type="submit" class="btn btn-warning btn-lg hvr-icon-forward" ng-click="editAuthor(author.id)">Editer&nbsp;
+                      </button>
+                  </td>
+                  <td>
+                  </td>
+                  
+
+                </tr>
+              </table>
+            </form></td>
+          </tr>
+        </table>
+        <!-- <flash-message show-close="true" duration="2000" on-dismiss="myCallback(flash)"></flash-message> -->
+
+  </div>
+</div> 
 
 	<% include ./partials/footer %>
-
+</body>
 
 </html>

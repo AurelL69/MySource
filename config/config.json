@@ -1,0 +1,10 @@
+{
+	"aurelien": 
+ 	{
+	    "username": "kdtivxqczvodrh",
+	    "password": "dm3JxwIbqU_i6bcDs9yO7DsnSf",
+	    "database": "dclsq01k6cqvi3",
+	    "host": "ec2-54-243-243-89.compute-1.amazonaws.com",
+	    "dialect": "postgres"
+	}
+}

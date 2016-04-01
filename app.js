@@ -13,7 +13,7 @@ var app = express();
 app.set( 'views', path.join(__dirname, 'views') );
 app.set( 'view engine', 'ejs' );
 
-app.set('port', (process.env.PORT || 5000));
+// app.listen(process.env.PORT || 5000)
 
 // middleware
 app.use( logger('dev') );
@@ -30,11 +30,13 @@ app.use( '/', require( path.join(__dirname, 'routes', 'routes.js') ) );
 
 
 // instantiation du serveur web
-var server = http.createServer( app );
+var server = http.createServer( app ).listen(5000);
+
+ console.log('Server running at http://127.0.0.1:5000/');
 
 
 // démarrage du serveur web
-server.listen(port);
-server.on('listening', function() {
-  console.log( 'Web server listening on port ' + port + '...' );
-} )
+// server.listen(port);
+// server.on('listening', function() {
+//   console.log( 'Web server listening on port ' + port + '...' );
+// } )

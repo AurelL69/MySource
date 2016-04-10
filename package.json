@@ -15,8 +15,8 @@
     "express": "~4.13.1",
     "morgan": "~1.6.1",
     "mysql": "^2.10.2",
-    "pg": "^4.5.1",
-    "sequelize": "^3.20.0"
+    "pg": "^4.5.3",
+    "sequelize": "^3.21.0"
   },
   "description": "Budapest Festival",
   "main": "app.js",

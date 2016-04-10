@@ -1,7 +1,7 @@
 
 {
-	"production" : 
+	"production": 
 	{
-  		"use_env_variable": "postgres://dxohrdrjqsiwju:knyvfSlHCSEitzuOgwkzdzZOIK@ec2-54-243-243-89.compute-1.amazonaws.com:5432/d4jgqff2tqetr2"
+  		"use_env_variable": "DATABASE_URL"	
 	}
 }
